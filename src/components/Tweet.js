@@ -17,8 +17,11 @@ const Tweet = ({ tweet }) => {
     const dispatch = useDispatch();
     const likeOrDislikeHandler = async (id) => {
         try {
+            const token = localStorage.getItem('token');
             const res = await axios.put(`${TWEET_API_END_POINT}/like/${id}`, { id: user?._id }, {
-                withCredentials: true
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             })
             // console.log(res);
             dispatch(getRefresh());
@@ -31,8 +34,13 @@ const Tweet = ({ tweet }) => {
 
     const deleteTweetHandler = async (id)=>{
         try {
+            const token = localStorage.getItem('token');
             axios.defaults.withCredentials = true;
-            const res = await axios.delete(`${TWEET_API_END_POINT}/delete/${id}`);
+            const res = await axios.delete(`${TWEET_API_END_POINT}/delete/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             // console.log(res);
             dispatch(getRefresh());
             toast.success(res.data.message);
