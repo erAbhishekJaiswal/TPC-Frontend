@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch} from "react-redux"
 import { getUser } from '../redux/userSlice';
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [isLogin, setisLogin] = useState(true);
@@ -33,7 +34,9 @@ const Login = () => {
         if(res.data.success){
           navigate("/")
           toast.success(res.data.message)
+          const usercookiedata = Cookies.get();
           console.log(res.data.user);
+          console.log(usercookiedata);
         }
       } catch (error) {
         toast.success(error.response.data.message)
