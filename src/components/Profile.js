@@ -22,8 +22,13 @@ const Profile = () => {
     if (user.following.includes(id)) {
       //Unfollow
       try {
+        const token = localStorage.getItem('token');
         axios.defaults.withCredentials=true;
-        const res =await axios.post(`${USER_API_END_POINT}/unfollow/${id}`,{id:user?._id});
+        const res =await axios.post(`${USER_API_END_POINT}/unfollow/${id}`,{id:user?._id},{
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         // console.log(res);
         dispatch(followingUpdate(id))
         dispatch(getRefresh())
@@ -36,8 +41,13 @@ const Profile = () => {
       }
     } else {
       try {
+        const token = localStorage.getItem('token');
         axios.defaults.withCredentials=true;
-        const res = await axios.post(`${USER_API_END_POINT}/follow/${id}`,{id:user?._id});
+        const res = await axios.post(`${USER_API_END_POINT}/follow/${id}`,{id:user?._id},{
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         // console.log(res);
         dispatch(followingUpdate(id))
         dispatch(getRefresh())

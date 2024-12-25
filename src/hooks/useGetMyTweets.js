@@ -29,8 +29,14 @@ const useGetMyTweets = (id) => {
 
     const followingTweetHandler = async () => {
         try {
+            const token = localStorage.getItem('token');
             axios.defaults.withCredentials = true;
-            const res = await axios.get(`${TWEET_API_END_POINT}/followingtweets/${id}`)
+            const res = await axios.get(`${TWEET_API_END_POINT}/followingtweets/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${token}`  // Add the token to the Authorization header
+                },
+                // withCredentials: true  // Ensure credentials (cookies) are included
+            })
             console.log(res);
             dispatch(getAllTweets(res.data.tweets))
             // dispatch(getRefresh())

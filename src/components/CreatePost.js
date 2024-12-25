@@ -15,11 +15,11 @@ const CreatePost = () => {
   const dispatch = useDispatch();
   const submitHandler = async () => {
     try {
+      const token = localStorage.getItem('token');
       const res = await axios.post(`${TWEET_API_END_POINT}/create`, { discription, id: user?._id }, {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        withCredentials: true,
+         headers: {
+                    Authorization: `Bearer ${token}`  // Add the token to the Authorization header
+                },
       });
       // console.log(res);
       dispatch(getRefresh())
