@@ -4,14 +4,19 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { getOtherUsers } from "../redux/userSlice";
 import { getOtherUsers } from "../redux/userSlice";
+import Cookies from 'js-cookie';  // Import js-cookie
 
 const useOtherUsers = (id) => {
     const dispatch = useDispatch();
     useEffect(() => {
         const fetchOtherUsers = async () => {
             try {
-                const res = await axios.get(`${USER_API_END_POINT}/otheruser/${id}`, {
-                    withCredentials: true
+                const token = Cookies.get('token');  // Replace 'token' with the actual name of your cookie
+                const res = await axios.get(`${USER_API_END_POINT}/otheruser/${id}`,{
+                    headers: {
+                        Authorization: `Bearer ${token}`  // Add the token to the Authorization header
+                    },
+                    withCredentials: true  // Ensure credentials (cookies) are included
                 });
                 // console.log(res);
                 dispatch(getOtherUsers(res.data.otherUsers));

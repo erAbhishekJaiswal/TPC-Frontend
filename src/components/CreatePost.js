@@ -18,7 +18,6 @@ const CreatePost = () => {
       const res = await axios.post(`${TWEET_API_END_POINT}/create`, { discription, id: user?._id }, {
         headers: {
           "Content-Type": "application/json"
-
         },
         withCredentials: true,
       });
