@@ -68,7 +68,7 @@ const CreatePost = () => {
       <div className='m-3'>
         <div className='flex items-center'>
           <div>
-            <Avatar src='https://pbs.twimg.com/profile_images/1762469282867277825/uJizXop2_400x400.jpg' size="50" round={true} />
+            <Avatar src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' size="50" round={true} />
           </div>
           <input value={discription} onChange={(e) => setdescription(e.target.value)} className='w-full outline-none border-none text-lg ml-4' type="text" placeholder='What is happning ?!' />
         </div>
