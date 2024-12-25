@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTweets } from "../redux/tweetSlice";
 import axios from "axios";
+import Cookies from 'js-cookie';  // Import js-cookie
 
 
 const useGetMyTweets = (id) => {
@@ -11,8 +12,13 @@ const useGetMyTweets = (id) => {
 
     const fetchMyTweets = async () => {
         try {
-            const res = await axios.get(`${TWEET_API_END_POINT}/alltweets/${id}`, {
-                withCredentials: true
+            const token = Cookies.get('token');  // Replace 'token' with the actual name of your cookie
+
+            const res = await axios.get(`${TWEET_API_END_POINT}/alltweets/${id}`,  {
+                headers: {
+                    Authorization: `Bearer ${token}`  // Add the token to the Authorization header
+                },
+                withCredentials: true  // Ensure credentials (cookies) are included
             });
             // console.log(res);
             dispatch(getAllTweets(res.data.tweets));

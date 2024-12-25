@@ -21,22 +21,46 @@ const Login = () => {
     if (isLogin) {
       //login
       try {
-        const res = await axios.post(`${USER_API_END_POINT}/login`, { email, password }, {
+        const res = await axios.post(`https://tpc-backend.vercel.app/api/v1/user/login`, { email, password }, {
           headers: {
             'Content-Type': "application/json"
           },
           withCredentials: true
-        });
+        }
+      );
         // console.log(res);
         dispatch(getUser(res?.data?.user))
         if(res.data.success){
           navigate("/")
           toast.success(res.data.message)
+          console.log(res.data.user);
         }
       } catch (error) {
         toast.success(error.response.data.message)
         console.log(error);
       }
+
+      // const axiosInstance = axios.create({
+      //   baseURL: USER_API_END_POINT,
+      //   timeout: 10000, // 10 seconds timeout
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   withCredentials: true,
+      // });
+      
+      // try {
+      //   const res = await axiosInstance.post('/login', { email, password });
+      //   dispatch(getUser(res?.data?.user));
+      //   if (res.data.success) {
+      //     navigate("/");
+      //     toast.success(res.data.message);
+      //   }
+      // } catch (error) {
+      //   toast.error(error.response?.data?.message || "An error occurred");
+      //   console.error(error);
+      // }
+      
 
     } else {
       //signup
