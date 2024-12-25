@@ -29,16 +29,15 @@ const Login = () => {
           withCredentials: true
         }
       );
-        // console.log(res);
+        console.log(res);
         dispatch(getUser(res?.data?.user))
         if(res.data.success){
           navigate("/")
           toast.success(res.data.message)
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("token", res.data.token);
-          const usercookiedata = Cookies.get('token');
-          console.log(res.data.user);
-          console.log(usercookiedata);
+          const token = document.cookie.split("=")[1];
+          console.log("Token:", token);
         }
       } catch (error) {
         toast.success(error.response.data.message)
