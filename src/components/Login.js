@@ -37,8 +37,8 @@ const Login = () => {
           toast.success(res.data.message)
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("token", res.data.token);
-          const cookies = new Cookies();
-          const token = cookies.get('token');
+          // const cookies = new Cookies();
+          const token = Cookies.get('token');
           console.log("Token:", token);
         }
       } catch (error) {
