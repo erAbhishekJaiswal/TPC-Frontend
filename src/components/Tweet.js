@@ -46,7 +46,7 @@ const Tweet = ({ tweet }) => {
         <div className='border-b border-gray-200'>
             <div>
                 <div className='flex p-4'>
-                    <Avatar src='https://pbs.twimg.com/profile_images/1762469282867277825/uJizXop2_400x400.jpg' size="50" round={true} />
+                    <Avatar src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' size="50" round={true} />
                     <div className='ml-2 w-full'>
                         <div className='flex items-center'>
                             <h1 className='font-bold'>{tweet?.userDetails[0].name}</h1>

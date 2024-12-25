@@ -30,7 +30,7 @@ const Login = () => {
           withCredentials: true
         }
       );
-        console.log(res);
+        // console.log(res);
         dispatch(getUser(res?.data?.user))
         if(res.data.success){
           navigate("/")

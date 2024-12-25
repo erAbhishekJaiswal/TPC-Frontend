@@ -66,7 +66,7 @@ const Profile = () => {
         </div>
         <img src="https://pbs.twimg.com/profile_banners/1762469058954289153/1711279563/1500x500" alt="banner" />
         <div className='absolute top-52 ml-2 border-4 border-black rounded-full'>
-          <Avatar src='https://pbs.twimg.com/profile_images/1762469282867277825/uJizXop2_400x400.jpg' size="120" round={true} />
+          <Avatar src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' size="120" round={true} />
         </div>
         <div className='text-right m-4'>
 

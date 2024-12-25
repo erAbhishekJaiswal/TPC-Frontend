@@ -10,7 +10,7 @@ const useGetProfile = (id) => {
         const fetchMyProfile = async () => {
             try {
                 const token = localStorage.getItem('token');  // Replace 'token' with the actual name of your cookie
-                console.log(token);
+                // console.log(token);
                 
                 const res = await axios.get(`${USER_API_END_POINT}/profile/${id}`,{
                     headers: {
